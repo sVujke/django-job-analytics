@@ -29,37 +29,65 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="about">
-            <div class="col-md-6">
-                <h2 class="featurette-heading">This First Heading
+            <div class="col-md-12 text-center">
+                <h2 class="featurette-heading ">This First Heading
                 <span class="text-muted">Will Catch Your Eye</span>
                 </h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla
-                    . Vestibulum id ligula porta felis euismod semper.
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+
             </div>
-            <div class="col-md-6">
-                <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <div class="col-md-10 col-md-offset-1" id="tag-bar">
+
             </div>
         </div>
 
         <hr class="featurette-divider">
 
         <div class="featurette" id="about">
-            <div class="col-lg-6">
-                <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <div class="col-md-10 col-md-offset-1" id="position-bar">
+
             </div>
-            <div class="col-lg-6">
+
+            <div class="col-lg-12 text-center">
                 <h2 class="featurette-heading">This First Heading
                 <span class="text-muted">Will Catch Your Eye</span>
                 </h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla
-                    . Vestibulum id ligula porta felis euismod semper.
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+
             </div>
 
         </div>
 
+
     </div>
+
+    <script>
+        var x_arr =[];
+        var y_arr = [];
+        {% for x in top_tags %}
+            x_arr.push('{{x.id}}');
+        {% endfor %}
+
+        {% for y in top_tags %}
+            y_arr.push('{{y.count}}');
+        {% endfor %}
+	TESTER = document.getElementById('tag-bar');
+	Plotly.plot( TESTER, [{
+	x: x_arr,
+	y: y_arr, type:'bar' }], {
+	margin: { t: 0 } } );
+
+        var x1_arr =[];
+        var y1_arr = [];
+        {% for x in top_positions %}
+            x1_arr.push('{{x.id}}');
+            y1_arr.push('{{x.count}}');
+        {% endfor %}
+
+	TESTER = document.getElementById('position-bar');
+	Plotly.plot( TESTER, [{
+	x: x1_arr,
+	y: y1_arr, type:'bar' }], {
+	margin: { t: 0 } } );
+	</script>
 
 </body>
 </html>

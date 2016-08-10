@@ -12,7 +12,7 @@ def home(request):
     top_tags = mongo_queries.top_x(10,"date","29/07/16","$tags")
     top_cities = mongo_queries.top_x(5,"date","29/07/16","$city")
     top_firms = mongo_queries.top_x(10,"date","29/07/16","$firm")
-    top_positions = mongo_queries.top_x(10,"date","29/07/16","$positions")
+    top_positions = mongo_queries.top_x(10,"date","29/07/16","$position")
 
     key_modificator(top_tags)
     key_modificator(top_cities)
