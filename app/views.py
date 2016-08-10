@@ -8,7 +8,7 @@ def key_modificator(x_list):
 # Create your views here.
 def home(request):
 
-    add_num = mongo_queries.count_by_key("date","29/7/16")
+    add_num = mongo_queries.count_by_key("date","29/07/16")
     top_tags = mongo_queries.top_x(10,"date","29/07/16","$tags")
     top_cities = mongo_queries.top_x(5,"date","29/07/16","$city")
     top_firms = mongo_queries.top_x(10,"date","29/07/16","$firm")
