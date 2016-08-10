@@ -29,13 +29,14 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="about">
-            <div class="col-md-12 text-center">
-                <h2 class="featurette-heading ">This First Heading
-                <span class="text-muted">Will Catch Your Eye</span>
-                </h2>
+
+            <div class="col-md-10 col-md-offset-2" id="tag-bar">
 
             </div>
-            <div class="col-md-10 col-md-offset-1" id="tag-bar">
+            <div class="col-md-12 text-center">
+                <h2 class="featurette-heading ">Top 10
+                <span class="text-muted">Tags of the Day</span>
+                </h2>
 
             </div>
         </div>
@@ -43,13 +44,45 @@
         <hr class="featurette-divider">
 
         <div class="featurette" id="about">
-            <div class="col-md-10 col-md-offset-1" id="position-bar">
+            <div class="col-md-10 col-md-offset-2" id="position-bar">
 
             </div>
 
             <div class="col-lg-12 text-center">
-                <h2 class="featurette-heading">This First Heading
-                <span class="text-muted">Will Catch Your Eye</span>
+                <h2 class="featurette-heading">Top 10
+                <span class="text-muted">Jobs of the Day</span>
+                </h2>
+
+            </div>
+
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="featurette" id="about">
+            <div class="col-md-10 col-md-offset-2" id="city-bar">
+
+            </div>
+
+            <div class="col-lg-12 text-center">
+                <h2 class="featurette-heading">Top 5
+                <span class="text-muted">Locations of the Day</span>
+                </h2>
+
+            </div>
+
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="featurette" id="about">
+            <div class="col-md-10 col-md-offset-2" id="firm-bar">
+
+            </div>
+
+            <div class="col-lg-12 text-center">
+                <h2 class="featurette-heading">Top 10
+                <span class="text-muted">Companies of the Day</span>
                 </h2>
 
             </div>
@@ -60,20 +93,32 @@
     </div>
 
     <script>
+
         var x_arr =[];
         var y_arr = [];
+
         {% for x in top_tags %}
             x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
         {% endfor %}
 
-        {% for y in top_tags %}
-            y_arr.push('{{y.count}}');
-        {% endfor %}
-	TESTER = document.getElementById('tag-bar');
-	Plotly.plot( TESTER, [{
-	x: x_arr,
-	y: y_arr, type:'bar' }], {
-	margin: { t: 0 } } );
+
+        var data = [{
+            x: x_arr,
+            y: y_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }]
+
+        Plotly.newPlot('tag-bar', data);
 
         var x1_arr =[];
         var y1_arr = [];
@@ -82,11 +127,69 @@
             y1_arr.push('{{x.count}}');
         {% endfor %}
 
-	TESTER = document.getElementById('position-bar');
-	Plotly.plot( TESTER, [{
-	x: x1_arr,
-	y: y1_arr, type:'bar' }], {
-	margin: { t: 0 } } );
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }]
+
+        Plotly.newPlot('position-bar', data);
+
+        var x1_arr =[];
+        var y1_arr = [];
+        {% for x in top_cities %}
+            x1_arr.push('{{x.id}}');
+            y1_arr.push('{{x.count}}');
+        {% endfor %}
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }]
+
+        Plotly.newPlot('city-bar', data);
+
+    var x1_arr =[];
+        var y1_arr = [];
+        {% for x in top_firms %}
+            x1_arr.push('{{x.id}}');
+            y1_arr.push('{{x.count}}');
+        {% endfor %}
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }]
+
+        Plotly.newPlot('firm-bar', data);
 	</script>
 
 </body>
