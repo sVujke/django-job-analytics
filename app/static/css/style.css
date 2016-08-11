@@ -35,6 +35,11 @@
 
 }
 
+a :hover {
+    background-color: #3ca2ff;
+    color: white;
+}
+
 .black{
     color: black;
 }
