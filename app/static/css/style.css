@@ -22,7 +22,7 @@
     width: 800px;
 }
 
-.tag-div{
+.tags-div{
     border-radius: 1px;
     border-style: solid;
     border-color: inherit;
@@ -35,14 +35,38 @@
 
 }
 
-#tag-list a:hover {
+.firm-div{
+    border-radius: 1px;
+    border-style: solid;
+    border-color: inherit;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-color: #d0112b;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 5px;
+    height: 50px;
+
+}
+
+#tags-list a :hover {
     background-color: #3ca2ff;
+    color: white;
+}
+
+#firm-list a:hover {
+    background-color: #d0112b;
     color: white;
 }
 
 .tags-title{
     color: white;
     background-color: #3ca2ff;
+}
+
+.firm-title{
+    color: white;
+    background-color: #d0112b;
 }
 
 .black{

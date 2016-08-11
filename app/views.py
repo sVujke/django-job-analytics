@@ -9,7 +9,7 @@ def key_modificator(x_list):
 def search(collection,value):
         subset = []
         for i in collection:
-            if value in i:
+            if value in i.lower():
                 subset.append(i)
 
         return subset
@@ -38,17 +38,46 @@ def home(request):
 
     return render(request, 'home.html', context)
 
-def tags(request):
+# def tags(request):
+#
+#     tags = mongo_queries.unique("tags")
+#
+#     if request.method == "GET":
+#         query = request.GET.get("filter")
+#         if query:
+#             tags = search(tags,query)
+#
+#     context = {
+#         "tags": tags,
+#     }
+#
+#     return render(request, 'tags.html', context)
 
-    tags = mongo_queries.unique("tags")
+def list(request, slug):
+    query_set = mongo_queries.unique(slug)
+
+    name = {
+        "city": "Cities",
+        "position": "Positions",
+        "tags": "Tags",
+        "firm": "Companies"
+    }
+
+    headline_css = slug+"-title"
+    div_css = slug+"-div"
+    list_css = slug+"-list"
 
     if request.method == "GET":
         query = request.GET.get("filter")
         if query:
-            tags = search(tags,query)
+            query_set = search(query_set,query.lower())
 
     context = {
-        "tags": tags,
+        "query_set": query_set,
+        "title": name[slug],
+        "headline_css": headline_css,
+        "div_css": div_css,
+        "list_css": list_css,
     }
 
-    return render(request, 'tags.html', context)
+    return render(request, 'list.html', context)
