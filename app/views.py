@@ -44,7 +44,8 @@ def tags(request):
 
     if request.method == "GET":
         query = request.GET.get("filter")
-        tags = search(tags,query)
+        if query:
+            tags = search(tags,query)
 
     context = {
         "tags": tags,

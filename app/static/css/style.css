@@ -35,9 +35,14 @@
 
 }
 
-a :hover {
+#tag-list a:hover {
     background-color: #3ca2ff;
     color: white;
+}
+
+.tags-title{
+    color: white;
+    background-color: #3ca2ff;
 }
 
 .black{
