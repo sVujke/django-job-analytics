@@ -49,6 +49,35 @@
 
 }
 
+.position-div{
+    border-radius: 1px;
+    border-style: solid;
+    border-color: inherit;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-color: #9e005d;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 5px;
+    height: 60px;
+
+}
+
+.city-div{
+    border-radius: 1px;
+    border-style: solid;
+    border-color: inherit;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-color: #f43900;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 5px;
+    height: 60px;
+
+}
+
+
 #tags-list a :hover {
     background-color: #3ca2ff;
     color: white;
@@ -56,6 +85,16 @@
 
 #firm-list a:hover {
     background-color: #d0112b;
+    color: white;
+}
+
+#position-list a:hover {
+    background-color: #9e005d;
+    color: white;
+}
+
+#city-list a:hover {
+    background-color: #f43900;
     color: white;
 }
 
@@ -68,6 +107,17 @@
     color: white;
     background-color: #d0112b;
 }
+
+.position-title{
+    color: white;
+    background-color: #9e005d;
+}
+
+.city-title{
+    color: white;
+    background-color: #f43900;
+}
+
 
 .black{
     color: black;
