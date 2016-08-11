@@ -29,3 +29,22 @@ def home(request):
     }
 
     return render(request, 'home.html', context)
+
+def tags(request):
+
+    def search(collection,value):
+        subset = []
+        for i in collection:
+            if value in i:
+                subset.append(i)
+
+        return subset
+    tags = mongo_queries.unique("tags")
+
+    subset = search(tags,"java")
+
+    context = {
+        "tags": tags,
+        "subset": subset,
+    }
+    return render(request, 'tags.html', context)

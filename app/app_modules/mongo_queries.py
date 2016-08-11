@@ -1,6 +1,7 @@
 import mongo_connection
 import pprint
 from bson.son import SON
+import pymongo
 
 db, collection = mongo_connection.connect_client('jobs_db','job_posts')
 
@@ -82,4 +83,7 @@ def top_x(x,key1,value,dkey):
 # print "Frekvencijski recnik"
 # print list(collection.aggregate
 
-count_by_key("city","Belgrade")
+def unique(key):
+    return collection.distinct(key)
+
+

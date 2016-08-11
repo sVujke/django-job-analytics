@@ -21,3 +21,24 @@
     height: 400px;
     width: 800px;
 }
+
+.tag-div{
+    border-radius: 1px;
+    border-style: solid;
+    border-color: inherit;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom-color: #3ca2ff;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 5px;
+
+}
+
+.black{
+    color: black;
+}
+
+.margin-bottom{
+    margin-bottom: 20px;
+}

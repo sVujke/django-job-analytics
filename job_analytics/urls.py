@@ -19,5 +19,6 @@ from app import views
 
 urlpatterns = [
     url(r'^$', views.home, name="home"),
+    url(r'^tags/$', views.tags, name="tags"),
     url(r'^admin/', admin.site.urls),
 ]
