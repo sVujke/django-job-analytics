@@ -5,6 +5,14 @@ from app_modules import mongo_queries
 def key_modificator(x_list):
     for i in x_list:
         i["id"] = i["_id"]
+
+def search(collection,value):
+        subset = []
+        for i in collection:
+            if value in i:
+                subset.append(i)
+
+        return subset
 # Create your views here.
 def home(request):
 
@@ -32,19 +40,14 @@ def home(request):
 
 def tags(request):
 
-    def search(collection,value):
-        subset = []
-        for i in collection:
-            if value in i:
-                subset.append(i)
-
-        return subset
     tags = mongo_queries.unique("tags")
 
-    subset = search(tags,"java")
+    if request.method == "GET":
+        query = request.GET.get("filter")
+        tags = search(tags,query)
 
     context = {
         "tags": tags,
-        "subset": subset,
     }
+
     return render(request, 'tags.html', context)
