@@ -154,11 +154,16 @@
 }
 
 #mean-item{
-    height: 200px;
-    width: 200px;
+    height: 350px;
+    width: 350px;
 }
 
 #min-max-item{
-    height: 200px;
-    width: 200px;
+    height: 350px;
+    width: 350px;
+}
+
+#q-item{
+    height: 400px;
+    width: 800px;
 }

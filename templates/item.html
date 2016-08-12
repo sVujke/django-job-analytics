@@ -27,22 +27,22 @@
             </div>
         </div>
 
-        <hr class="featurette-divider-small">
+        <hr class="featurette-divider-xsmall">
 
         <div class="row">
             <div class="col-md-5 col-md-offset-1" id="mean-item">
 
             </div>
 
-            <div class="col-md-5 col-md-offset-1" id="min-max-item">
+            <div class="col-md-5 col-md-offset-2" id="min-max-item">
 
             </div>
         </div>
 
-        <hr class="featurette-divider-small">
+        <hr class="featurette-divider-xsmall">
 
          <div class="row">
-            <div class="col-md-10 col-md-offset-1" id="min-max-item">
+            <div class="col-md-10 col-md-offset-2" id="q-item">
 
             </div>
         </div>
@@ -50,7 +50,9 @@
 
     <script>
 
-        /* timeline line chart*/
+        /*
+            Timeline line chart
+        */
         var x_arr =[];
         var y_arr = [];
 
@@ -68,6 +70,95 @@
         }]
 
         Plotly.newPlot('timeline-item', data);
+
+        /*
+            Mean and STD bar chart
+        */
+
+        var x1_arr =[];
+        var y1_arr = [];
+
+        x1_arr.push('Mean');
+        x1_arr.push("Std");
+        y1_arr.push('{{ stats.mean}}');
+        y1_arr.push('{{ stats.std }}');
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }];
+
+        Plotly.newPlot('mean-item', data);
+
+        /*
+            MMin-Max bar chart
+        */
+
+        var x1_arr =[];
+        var y1_arr = [];
+
+        x1_arr.push('Min');
+        x1_arr.push("Max");
+        y1_arr.push('{{ stats.min}}');
+        y1_arr.push('{{ stats.max }}');
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }];
+
+        Plotly.newPlot('min-max-item', data);
+
+        /*
+            Quartile bar chart
+        */
+
+        var x1_arr =[];
+        var y1_arr = [];
+
+        x1_arr.push('25%');
+        x1_arr.push("50%");
+        x1_arr.push("75%");
+        y1_arr.push('{{ stats.q1}}');
+        y1_arr.push('{{ stats.q2 }}');
+        y1_arr.push('{{ stats.q3 }}');
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }];
+
+        Plotly.newPlot('q-item', data);
     </script>
 </body>
 </html>

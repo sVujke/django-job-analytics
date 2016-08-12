@@ -43,6 +43,10 @@ body {
     margin: 50px 0;
 }
 
+.featurette-divider-xsmall{
+    margin: 20px 0;
+}
+
 .featurette {
     overflow: hidden;
 }

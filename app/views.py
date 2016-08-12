@@ -144,6 +144,9 @@ def item(request, slug, id):
 
     key_modificator(timeline)
 
+    stats["q1"] = stats["25%"]
+    stats["q2"] = stats["50%"]
+    stats["q3"] = stats["75%"]
     context = {
         "item_name": item_name,
         "timeline": timeline,
