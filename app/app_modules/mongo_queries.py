@@ -18,37 +18,17 @@ pprint.pprint(one)
 # printing the number of documents with city: Beograd and Belgrade
 def count_by_key(key, value):
     return collection.find({key:value}).count()
-beograd = collection.find({"city":"Beograd"}).count()
-# print "Oglasi iz Beograda"
-# pprint.pprint(beograd)
 
-belgrade = collection.find({"city":"Belgrade"}).count()
-# print "Oglasi iz Belgrade"
-# pprint.pprint(belgrade)
 
-belgrade = collection.find({"city":{ '$in': ["Belgrade", "Beograd"]}}).count()
-# print "Oglasi iz Belgrade i Beograd"
-# pprint.pprint(belgrade)
-
-# printing number of jobs with java tag query for list
-java = collection.find({"tags":"java"}).count()
-# print "Oglasi sa tagom Java:"
-# pprint.pprint(java)
-
-# unique values for companies
-unique = collection.distinct("firm")
-#for firm in unique:
-#    pprint.pprint(firm)
-# print "No. of companies that advertise positions"
-# print len(unique)
-# print unique
-
-unique = collection.distinct("tags")
-#for firm in unique:
-#    pprint.pprint(firm)
-# print "No. of unique tags"
-# print len(unique)
-# print unique
+def timeline_for_key(key,value):
+    dkey = "$"+key 
+    pipeline = [
+    {"$unwind": dkey},
+    {"$match": { key: value}},
+    {"$group": {"_id": "$date", "count": {"$sum": 1}}},
+    {"$sort": {"_id": 1}}
+    ]
+    return list(collection.aggregate(pipeline))
 
 #https://api.mongodb.com/python/current/examples/aggregation.html
 

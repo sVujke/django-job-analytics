@@ -40,8 +40,8 @@
       <file leaf-file-name="mongo_queries.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app_modules/mongo_queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7875">
-              <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.19583334">
+              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -152,7 +152,6 @@
         <option value="$PROJECT_DIR$/templates/scripts.html" />
         <option value="$PROJECT_DIR$/app/static/js/plots-home.js" />
         <option value="$PROJECT_DIR$/templates/home.html" />
-        <option value="$PROJECT_DIR$/app/app_modules/mongo_queries.py" />
         <option value="$PROJECT_DIR$/app/static/css/wonder.css" />
         <option value="$PROJECT_DIR$/templates/tags.html" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
@@ -161,6 +160,7 @@
         <option value="$PROJECT_DIR$/job_analytics/urls.py" />
         <option value="$PROJECT_DIR$/templates/list.html" />
         <option value="$PROJECT_DIR$/app/views.py" />
+        <option value="$PROJECT_DIR$/app/app_modules/mongo_queries.py" />
       </list>
     </option>
   </component>
@@ -843,8 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app_modules/mongo_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7875">
-          <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.19583334">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
