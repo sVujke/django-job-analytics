@@ -2,10 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ item_name }}</title>
+
+    {% load staticfiles %}
+    {% include "scripts.html" %}
 </head>
 <body>
-    {{ item_name }}
-    <p>Mean: {{ stats.mean }}</p>
+
+    {% include "navbar.html" %}
+
+    <div class="container">
+
+         <div class="row margin-bottom">
+            <div class="col-md-10 col-md-offset-1  text-center ">
+                <h1 class="{{ headline_css }}">{{ item_name }}</h1>
+            </div>
+        </div>
+
+        <hr class="featurette-divider-small">
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2" id="timeline-item">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider-small">
+
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1" id="mean-item">
+
+            </div>
+
+            <div class="col-md-5 col-md-offset-1" id="min-max-item">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider-small">
+
+         <div class="row">
+            <div class="col-md-10 col-md-offset-1" id="min-max-item">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        /* timeline line chart*/
+        var x_arr =[];
+        var y_arr = [];
+
+        {% for x in timeline %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+
+        var data = [{
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+
+        }]
+
+        Plotly.newPlot('timeline-item', data);
+    </script>
 </body>
 </html>

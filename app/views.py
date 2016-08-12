@@ -114,6 +114,7 @@ def list(request, slug):
 
 def item(request, slug, id):
 
+    headline_css = slug + "-title"
     query_set = mongo_queries.unique(slug)
 
     item_list = []
@@ -137,13 +138,17 @@ def item(request, slug, id):
     df = df.drop("_id",1)
     dict_describe = df.describe().to_dict()
     stats = dict_describe["count"]
+
     for key in stats:
         stats[key] = round(stats[key],2)
+
+    key_modificator(timeline)
 
     context = {
         "item_name": item_name,
         "timeline": timeline,
         "stats": stats,
+        "headline_css": headline_css,
     }
 
     return render(request, 'item.html', context)
