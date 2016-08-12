@@ -78,23 +78,39 @@
 }
 
 
-#tags-list a :hover {
+#tags-list .tags-div:hover {
     background-color: #3ca2ff;
+}
+
+#tags-list p:hover{
     color: white;
 }
 
-#firm-list a:hover {
+#firm-list .firm-div:hover {
     background-color: #d0112b;
+}
+
+#firm-list p:hover{
     color: white;
 }
 
-#position-list a:hover {
+#position-list .position-div:hover {
     background-color: #9e005d;
+}
+
+#position-list p:hover{
     color: white;
 }
 
-#city-list a:hover {
+.position-div#position-list{
+    color: white;
+}
+
+#city-list .city-div:hover {
     background-color: #f43900;
+}
+
+#city-list p:hover{
     color: white;
 }
 

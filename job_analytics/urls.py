@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^$', views.home, name="home"),
     #url(r'^tags/$', views.tags, name="tags"),
     url(r'^list/(?P<slug>[\w-]+)/$', views.list, name="list"),
+    url(r'^item/(?P<slug>[\w-]+)/(?P<id>[0-9]+)/$', views.item, name="item"),
     url(r'^admin/', admin.site.urls),
 ]

@@ -38,9 +38,9 @@
         <hr class="featurette-divider-small">
 
         <div class="row" id="{{ list_css }}">
-            {% for item in query_set %}
-                <a href="#"><div class="col-md-offset-1 col-md-2 {{ div_css }}">
-                    <p class="text-center black">{{ item }}</p>
+            {% for item in item_list %}
+                <a href="/item/{{ slug }}/{{ item.id }}/"><div class="col-md-offset-1 col-md-2 {{ div_css }}">
+                    <p class="text-center black">{{ item.name }}</p>
                 </div></a>
             {% endfor %}
         </div>
