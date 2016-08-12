@@ -14,4 +14,4 @@ def connect_client(db_name, collection_name):
     #print collection
     return db, collection
 
-connect_client('jobs','job-posts')
+#connect_client('jobs','job_ads')

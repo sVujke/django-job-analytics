@@ -3,7 +3,7 @@ import pprint
 from bson.son import SON
 import pymongo
 
-db, collection = mongo_connection.connect_client('jobs_db','job_posts')
+db, collection = mongo_connection.connect_client('jobs_db','job_ads')
 
 query_set = collection.find()
 

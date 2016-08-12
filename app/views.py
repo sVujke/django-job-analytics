@@ -2,7 +2,20 @@ from django.shortcuts import render
 from app_modules import mongo_queries
 import numpy as np
 import pandas as pd
+import datetime
 
+# returns todays date if it has passed 6PM and yesterdays date if not
+def yesterday_or_today():
+    now = datetime.datetime.utcnow()
+    today_fivepm = now.replace(hour=17, minute=0, second=0, microsecond=0)
+    if now > today_fivepm:
+        return now.replace(hour=16, minute=0, second=0, microsecond=0)
+    else:
+        return now.replace(hour=16, minute=0, second=0, microsecond=0)-datetime.timedelta(days=1)
+
+def get_current_datetime():
+    now = datetime.datetime.utcnow()
+    return now.replace(hour=16, minute=0, second=0, microsecond=0)
 
 def make_slug(word):
     if " " not in word:
@@ -34,11 +47,11 @@ def search(collection, value):
 
 # Create your views here.
 def home(request):
-    add_num = mongo_queries.count_by_key("date", "29/07/16")
-    top_tags = mongo_queries.top_x(10, "date", "29/07/16", "$tags")
-    top_cities = mongo_queries.top_x(5, "date", "29/07/16", "$city")
-    top_firms = mongo_queries.top_x(10, "date", "29/07/16", "$firm")
-    top_positions = mongo_queries.top_x(10, "date", "29/07/16", "$position")
+    add_num = mongo_queries.count_by_key("date", yesterday_or_today())
+    top_tags = mongo_queries.top_x(10, "date", yesterday_or_today(), "$tags")
+    top_cities = mongo_queries.top_x(5, "date", yesterday_or_today(), "$city")
+    top_firms = mongo_queries.top_x(10, "date", yesterday_or_today(), "$firm")
+    top_positions = mongo_queries.top_x(10, "date", yesterday_or_today(), "$position")
 
     key_modificator(top_tags)
     key_modificator(top_cities)
