@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from app_modules import mongo_queries
+import numpy as np
+import pandas as pd
 
 
 def make_slug(word):
@@ -129,8 +131,19 @@ def item(request, slug, id):
             item_name = i["name"]
             break
 
+    timeline = mongo_queries.timeline_for_key(slug,item_name)
+
+    df = pd.DataFrame.from_dict(timeline)
+    df = df.drop("_id",1)
+    dict_describe = df.describe().to_dict()
+    stats = dict_describe["count"]
+    for key in stats:
+        stats[key] = round(stats[key],2)
+
     context = {
         "item_name": item_name,
+        "timeline": timeline,
+        "stats": stats,
     }
 
     return render(request, 'item.html', context)

@@ -21,7 +21,7 @@ def count_by_key(key, value):
 
 
 def timeline_for_key(key,value):
-    dkey = "$"+key 
+    dkey = "$"+key
     pipeline = [
     {"$unwind": dkey},
     {"$match": { key: value}},
