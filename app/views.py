@@ -119,6 +119,7 @@ def list(request, slug):
 
     context = {
         "item_list": item_list,
+        "num_items": len(item_list),
         "title": name[slug],
         "headline_css": headline_css,
         "div_css": div_css,
