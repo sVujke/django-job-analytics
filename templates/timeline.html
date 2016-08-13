@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timeline</title>
+
+    {% load staticfiles %}
+    {% include "scripts.html" %}
+</head>
+<body>
+
+    {% include "navbar.html" %}
+
+    <div class="container">
+         <div class="row margin-bottom">
+            <div class="col-md-10 col-md-offset-1  text-center ">
+                <h1 class="timeline-title">Timeline - {{ n_days }} days</h1>
+            </div>
+        </div>
+
+        <hr class="featurette-divider-small">
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2" id="timeline-all">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider-xsmall">
+
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1" id="mean-all">
+
+            </div>
+
+            <div class="col-md-5 col-md-offset-2" id="min-max-all">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider-xsmall">
+
+         <div class="row">
+            <div class="col-md-10 col-md-offset-2" id="q-all">
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+            /*
+            Timeline line chart
+        */
+        var x_arr =[];
+        var y_arr = [];
+
+        {% for x in timeline %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+
+        var data = [{
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+
+        }]
+
+        Plotly.newPlot('timeline-all', data);
+
+        /*
+            Mean and STD bar chart
+        */
+
+        var x1_arr =[];
+        var y1_arr = [];
+
+        x1_arr.push('Mean');
+        x1_arr.push("Std");
+        y1_arr.push('{{ stats.mean}}');
+        y1_arr.push('{{ stats.std }}');
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }];
+
+        Plotly.newPlot('mean-all', data);
+
+        /*
+            MMin-Max bar chart
+        */
+
+        var x1_arr =[];
+        var y1_arr = [];
+
+        x1_arr.push('Min');
+        x1_arr.push("Max");
+        y1_arr.push('{{ stats.min}}');
+        y1_arr.push('{{ stats.max }}');
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }];
+
+        Plotly.newPlot('min-max-all', data);
+
+        /*
+            Quartile bar chart
+        */
+
+        var x1_arr =[];
+        var y1_arr = [];
+
+        x1_arr.push('25%');
+        x1_arr.push("50%");
+        x1_arr.push("75%");
+        y1_arr.push('{{ stats.q1}}');
+        y1_arr.push('{{ stats.q2 }}');
+        y1_arr.push('{{ stats.q3 }}');
+
+        var data = [{
+            x: x1_arr,
+            y: y1_arr,
+            type: 'bar',
+            orientation: 'v',
+            marker: {
+                color: 'rgb(118, 180, 90)',
+                opacity: 0.6,
+                line: {
+                  color: 'rbg(8,48,107)',
+                  width: 1.5
+            }
+            }
+        }];
+
+        Plotly.newPlot('q-all', data);
+    </script>
+</body>
+</html>

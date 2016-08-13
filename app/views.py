@@ -45,6 +45,23 @@ def search(collection, value):
 
     return subset
 
+def get_stats(x_list):
+    df = pd.DataFrame.from_dict(x_list)
+    df = df.drop("_id",1)
+    dict_describe = df.describe().to_dict()
+    stats = dict_describe["count"]
+
+    for key in stats:
+        stats[key] = round(stats[key],2)
+
+    key_modificator(x_list)
+
+    stats["q1"] = stats["25%"]
+    stats["q2"] = stats["50%"]
+    stats["q3"] = stats["75%"]
+
+    return stats
+
 
 # Create your views here.
 def home(request):
@@ -149,19 +166,9 @@ def item(request, slug, id):
 
     timeline = mongo_queries.timeline_for_key(slug,item_name)
 
-    df = pd.DataFrame.from_dict(timeline)
-    df = df.drop("_id",1)
-    dict_describe = df.describe().to_dict()
-    stats = dict_describe["count"]
 
-    for key in stats:
-        stats[key] = round(stats[key],2)
+    stats = get_stats(timeline)
 
-    key_modificator(timeline)
-
-    stats["q1"] = stats["25%"]
-    stats["q2"] = stats["50%"]
-    stats["q3"] = stats["75%"]
     context = {
         "item_name": item_name,
         "timeline": timeline,
@@ -170,3 +177,16 @@ def item(request, slug, id):
     }
 
     return render(request, 'item.html', context)
+
+def timeline(request):
+
+    time_line = mongo_queries.timeline_for_all()
+
+    stats = get_stats(time_line)
+    context = {
+        "timeline": time_line,
+        "stats": stats,
+        "n_days": int(stats["count"]),
+    }
+
+    return render(request, 'timeline.html', context)

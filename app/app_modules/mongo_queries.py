@@ -25,7 +25,7 @@ def timeline_for_key(key,value):
     ]
     return list(collection.aggregate(pipeline))
 
-def rimeline_for_all():
+def timeline_for_all():
 
     pipeline = [
     {"$group": {"_id": "$date", "count": {"$sum": 1}}},

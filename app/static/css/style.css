@@ -139,6 +139,12 @@
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.timeline-title{
+    color: white;
+    background-color: #004c4a;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .black{
     color: black;
@@ -153,7 +159,17 @@
     width: 800px;
 }
 
+#timeline-all{
+    height: 400px;
+    width: 800px;
+}
+
 #mean-item{
+    height: 350px;
+    width: 350px;
+}
+
+#mean-all{
     height: 350px;
     width: 350px;
 }
@@ -163,7 +179,17 @@
     width: 350px;
 }
 
+#min-max-all{
+    height: 350px;
+    width: 350px;
+}
+
 #q-item{
+    height: 400px;
+    width: 800px;
+}
+
+#q-all{
     height: 400px;
     width: 800px;
 }
