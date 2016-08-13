@@ -32,6 +32,9 @@
     border-right: none;
     border-top: none;
     margin-bottom: 5px;
+    display: table;
+    height: 20px;
+    overflow: hidden;
 
 }
 
@@ -45,8 +48,15 @@
     border-right: none;
     border-top: none;
     margin-bottom: 5px;
-    height: 50px;
+    display: table;
+    height: 60px;
+    overflow: hidden;
 
+}
+
+.wrap-item-p{
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .position-div{
@@ -59,7 +69,9 @@
     border-right: none;
     border-top: none;
     margin-bottom: 5px;
-    height: 60px;
+    display: table;
+    height: 90px;
+    overflow: hidden;
 
 }
 
@@ -68,12 +80,14 @@
     border-style: solid;
     border-color: inherit;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-bottom-color: #f43900;
+    border-bottom-color: #edc63b;
     border-left: none;
     border-right: none;
     border-top: none;
     margin-bottom: 5px;
+    display: table;
     height: 60px;
+    overflow: hidden;
 
 }
 
@@ -107,7 +121,7 @@
 }
 
 #city-list .city-div:hover {
-    background-color: #f43900;
+    background-color: #edc63b;
 }
 
 #city-list p:hover{
@@ -134,7 +148,7 @@
 
 .city-title{
     color: white;
-    background-color: #f43900;
+    background-color: #edc63b;
     border-radius: 4px;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -192,4 +206,26 @@
 #q-all{
     height: 400px;
     width: 800px;
+}
+
+@media (max-width: 480px) {
+    #timeline-item{height: 350px; width:350px; margin-left: -12%;}
+    #q-item{height: 350px; width:350px; margin-left: -12%;}
+    #mean-item{height: 350px; width:350px; margin-left: -12%;}
+    #min-max-item{height: 350px; width:350px; margin-left: -12%;}
+
+    #timeline-all{height: 350px; width:350px; margin-left: -12%;}
+    #q-all{height: 350px; width:350px; margin-left: -12%;}
+    #mean-all{height: 350px; width:350px; margin-left: -12%;}
+    #min-max-all{height: 350px; width:350px; margin-left: -12%;}
+
+    #tag-bar{height: 350px; width:400px; margin-left: -20%;}
+    #city-bar{height: 350px; width:400px; margin-left: -20%;}
+    #position-bar{height: 350px; width:400px; margin-left: -20%;}
+    #firm-bar{height: 350px; width:400px; margin-left: -20%;}
+
+    .city-div{width: 100%;}
+    .firm-div{width: 100%;}
+    .position-div{width: 100%;}
+    .tags-div{width: 100%;}
 }

@@ -89,21 +89,6 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-# def tags(request):
-#
-#     tags = mongo_queries.unique("tags")
-#
-#     if request.method == "GET":
-#         query = request.GET.get("filter")
-#         if query:
-#             tags = search(tags,query)
-#
-#     context = {
-#         "tags": tags,
-#     }
-#
-#     return render(request, 'tags.html', context)
-
 def list(request, slug):
     query_set = mongo_queries.unique(slug)
 

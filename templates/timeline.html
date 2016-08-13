@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Timeline</title>
 
     {% load staticfiles %}
@@ -135,9 +136,9 @@
         var x1_arr =[];
         var y1_arr = [];
 
-        x1_arr.push('25%');
-        x1_arr.push("50%");
-        x1_arr.push("75%");
+        x1_arr.push('Q1');
+        x1_arr.push("Q2");
+        x1_arr.push("Q3");
         y1_arr.push('{{ stats.q1}}');
         y1_arr.push('{{ stats.q2 }}');
         y1_arr.push('{{ stats.q3 }}');
