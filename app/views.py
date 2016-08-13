@@ -2,20 +2,21 @@ from django.shortcuts import render
 from app_modules import mongo_queries
 import numpy as np
 import pandas as pd
-import datetime
+import datetime,pytz
 
 # returns todays date if it has passed 6PM and yesterdays date if not
 def yesterday_or_today():
-    now = datetime.datetime.utcnow()
-    today_fivepm = now.replace(hour=17, minute=0, second=0, microsecond=0)
+    now = datetime.datetime.now(pytz.timezone("Europe/Belgrade"))
+    today_fivepm = now.replace(hour=20, minute=0, second=0, microsecond=0)
     if now > today_fivepm:
-        return now.replace(hour=16, minute=0, second=0, microsecond=0)
+        #print now.replace(hour=19, minute=0, second=0, microsecond=0)
+        return now.replace(hour=19, minute=0, second=0, microsecond=0)
     else:
-        return now.replace(hour=16, minute=0, second=0, microsecond=0)-datetime.timedelta(days=1)
+        #print now.replace(hour=17, minute=0, second=0, microsecond=0)-datetime.timedelta(days=1)
+        return now.replace(hour=19, minute=0, second=0, microsecond=0)-datetime.timedelta(days=1)
 
-def get_current_datetime():
-    now = datetime.datetime.utcnow()
-    return now.replace(hour=16, minute=0, second=0, microsecond=0)
+def date_to_string(date):
+    return date.strftime("%d-%m-%Y")
 
 def make_slug(word):
     if " " not in word:
@@ -65,6 +66,7 @@ def home(request):
         "top_cities": top_cities,
         "top_firms": top_firms,
         "top_positions": top_positions,
+        "date": date_to_string(yesterday_or_today())
     }
 
     return render(request, 'home.html', context)

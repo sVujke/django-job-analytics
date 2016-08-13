@@ -9,11 +9,6 @@ query_set = collection.find()
 
 query_set_size = query_set.count()
 
-print query_set_size
-
-# printing one docuent
-one = collection.find_one()
-pprint.pprint(one)
 
 # printing the number of documents with city: Beograd and Belgrade
 def count_by_key(key, value):
@@ -30,6 +25,15 @@ def timeline_for_key(key,value):
     ]
     return list(collection.aggregate(pipeline))
 
+def rimeline_for_all():
+
+    pipeline = [
+    {"$group": {"_id": "$date", "count": {"$sum": 1}}},
+    {"$sort": {"_id": 1}}
+    ]
+
+    return list(collection.aggregate(pipeline))
+
 #https://api.mongodb.com/python/current/examples/aggregation.html
 
 
@@ -40,8 +44,7 @@ pipeline = [
  ]
 #list(db.things.aggregate(pipeline))
 
-print "Frekvencijski recnik"
-print list(collection.aggregate(pipeline))
+
 
 
 pipeline = [
@@ -60,8 +63,7 @@ def top_x(x,key1,value,dkey):
     ]
     return list(collection.aggregate(pipeline))[:x]
 
-# print "Frekvencijski recnik"
-# print list(collection.aggregate
+
 
 def unique(key):
     return collection.distinct(key)
