@@ -176,3 +176,22 @@ def timeline(request):
     }
 
     return render(request, 'timeline.html', context)
+
+def trending(request):
+
+    tags = mongo_queries.unique("tags")[:10]
+
+    cities = mongo_queries.unique("city")[:10]
+
+    positions = mongo_queries.unique("position")[:10]
+
+    firms =mongo_queries.unique("firm")[:10]
+
+    context = {
+        "tags":tags,
+        "cities":cities,
+        "positions": positions,
+        "firms": firms,
+    }
+
+    return render(request, 'trending.html', context)

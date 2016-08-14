@@ -159,6 +159,12 @@
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.trending-title{
+    color: white;
+    background-color: #b8f629;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .black{
     color: black;
@@ -206,6 +212,26 @@
 #q-all{
     height: 400px;
     width: 800px;
+}
+
+.thead-tags{
+    background-color: #3ca2ff;
+    color: white;
+}
+
+.thead-position{
+    background-color: #9e005d;
+    color: white;
+}
+
+.thead-firm{
+    background-color: #d0112b;
+    color: white;
+}
+
+.thead-city{
+    background-color: #edc63b;
+    color: white;
 }
 
 @media (max-width: 480px) {

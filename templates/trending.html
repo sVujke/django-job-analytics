@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    {% load staticfiles  %}
+
+    {% include 'scripts.html' %}
+</head>
+<body>
+
+
+    <div class="container">
+
+        {% include 'navbar.html' %}
+
+         <div class="row margin-bottom">
+                <div class="col-md-10 col-md-offset-1  text-center ">
+                    <h1 class="trending-title">Trending</h1>
+                </div>
+         </div>
+
+         <hr class="featurette-divider-small">
+
+          <div class="row">
+              <div class="col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1  text-center ">
+                    <table class="table table-bordered">
+                        <thead class="thead-tags">
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th class="text-center">Tag</th>
+                              <th class="text-center">Z-Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tag in tags %}
+                            <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag }}</td>
+                              <td>{{ forloop.counter }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+          </div>
+
+          <hr class="featurette-divider-small">
+
+         <div class="row">
+             <div class="col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1  text-center ">
+                    <table class="table table-bordered">
+                        <thead class="thead-position">
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th class="text-center">Position</th>
+                              <th class="text-center">Z-Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tag in positions %}
+                            <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag }}</td>
+                              <td>{{ forloop.counter }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+         </div>
+
+         <hr class="featurette-divider-small">
+
+         <div class="row">
+             <div class="col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1  text-center ">
+                    <table class="table table-bordered">
+                        <thead class="thead-city">
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th class="text-center">City</th>
+                              <th class="text-center">Z-Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tag in cities %}
+                            <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag }}</td>
+                              <td>{{ forloop.counter }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+         </div>
+
+        <hr class="featurette-divider-small">
+
+         <div class="row">
+             <div class="col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1  text-center ">
+                    <table class="table table-bordered">
+                        <thead class="thead-firm">
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th class="text-center">Firm</th>
+                              <th class="text-center">Z-Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tag in firms %}
+                            <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag }}</td>
+                              <td>{{ forloop.counter }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+         </div>
+    </div>
+
+
+
+</body>
+</html>
