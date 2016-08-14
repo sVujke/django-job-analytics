@@ -15,6 +15,17 @@ def yesterday_or_today():
         #print now.replace(hour=17, minute=0, second=0, microsecond=0)-datetime.timedelta(days=1)
         return now.replace(hour=19, minute=0, second=0, microsecond=0)-datetime.timedelta(days=1)
 
+def ad_numid(query_set):
+    item_list = []
+    num_id = 0
+    for q in query_set:
+        subdict = {}
+        subdict["name"] = q
+        subdict["id"] = num_id
+        item_list.append(subdict)
+        num_id += 1
+    return item_list
+
 def date_to_string(date):
     return date.strftime("%d-%m-%Y")
 
@@ -38,12 +49,12 @@ def key_modificator(x_list):
 
 
 def search(collection, value):
-    subset = []
+    filtered = []
     for i in collection:
-        if value in i.lower():
-            subset.append(i)
+        if value in i["name"].lower():
+            filtered.append(i)
 
-    return subset
+    return filtered
 
 def get_stats(x_list):
     df = pd.DataFrame.from_dict(x_list)
@@ -91,7 +102,8 @@ def home(request):
 
 def list(request, slug):
     query_set = mongo_queries.unique(slug)
-
+    query_set = ad_numid(query_set)
+    item_list = query_set
     name = {
         "city": "Cities",
         "position": "Positions",
@@ -103,19 +115,16 @@ def list(request, slug):
     div_css = slug + "-div"
     list_css = slug + "-list"
 
+    filter = False
+
     if request.method == "GET":
         query = request.GET.get("filter")
         if query:
-            query_set = search(query_set, query.lower())
+            filtered_set = search(query_set, query.lower())
+            filter = True
 
-    item_list = []
-    num_id = 0
-    for q in query_set:
-        subdict = {}
-        subdict["name"] = q
-        subdict["id"] = num_id
-        item_list.append(subdict)
-        num_id = num_id + 1
+    if filter == True:
+        item_list = filtered_set
 
     context = {
         "item_list": item_list,
