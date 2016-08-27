@@ -26,13 +26,16 @@
         <div class="row">
             <div class="form-group">
                 <form role="form" action="" method="GET">
-                    <div class="form-group col-md-6 col-md-offset-2">
+                    <div class="form-group col-md-6 col-md-offset-1">
                         <input type="text" name="filter" value="{{ request.GET.filter }}" class="form-control " placeholder="Filter by word ie:  java, belgrade..">
                     </div>
-                    <div class="form-group col-md-3" >
+                    <div class="form-group col-md-4" >
                         <input type="submit" class="form-control btn btn-success" role="button" value="Filter">
                     </div>
                 </form>
+            </div>
+            <div class="col-md-12 compare-div">
+                <button type="button" class="btn btn-default col-md-10 col-md-offset-1" data-toggle="modal" data-target="#compareModal">Compare</button>
             </div>
         </div>
 
@@ -50,6 +53,73 @@
 
                 </div></a>
             {% endfor %}
+        </div>
+
+        <!-- Modal -->
+        <div id="compareModal" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="form-group">
+                    <form role="form" action="https://www.google.rs/#gws_rd=ssl">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title">Compare 5 {{ title }}</h2>
+                      </div>
+                      <div class="modal-body">
+
+                            <div class="form-group col-md-10 col-md-offset-1">
+                                <select class="form-control" name="item-1">
+                                    {% for i in item_list %}
+                                        <option value="{{ i.name }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                             <div class="form-group col-md-10 col-md-offset-1">
+                                <select class="form-control" name="item-1">
+                                    {% for i in item_list %}
+                                        <option value="{{ i.name }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                             <div class="form-group col-md-10 col-md-offset-1">
+                                <select class="form-control" name="item-1">
+                                    {% for i in item_list %}
+                                        <option value="{{ i.name }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                             <div class="form-group col-md-10 col-md-offset-1">
+                                <select class="form-control" name="item-1">
+                                    {% for i in item_list %}
+                                        <option value="{{ i.name }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                             </div>
+
+                             <div class="form-group col-md-10 col-md-offset-1">
+                                <select class="form-control" name="item-1">
+                                    {% for i in item_list %}
+                                        <option value="{{ i.name }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="col-md-3">
+                            <input type="submit" class="form-control btn btn-success" role="button" value="Compare">
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+
+          </div>
         </div>
     </div>
 </body>

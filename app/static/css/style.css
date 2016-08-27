@@ -255,3 +255,12 @@
     .position-div{width: 100%;}
     .tags-div{width: 100%;}
 }
+
+.compare-div{
+    margin-top: 10px;
+
+}
+
+.modal-body{
+    height:280px;
+}
