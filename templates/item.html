@@ -68,9 +68,13 @@
             y: y_arr,
             type: 'scatter',
 
-        }]
+        }];
 
-        Plotly.newPlot('timeline-item', data);
+        var layout = {
+            title:'No. of ads per day'
+        };
+
+        Plotly.newPlot('timeline-item', data, layout);
 
         /*
             Mean and STD bar chart

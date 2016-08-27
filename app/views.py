@@ -4,6 +4,45 @@ import numpy as np
 import pandas as pd
 import datetime,pytz
 
+# this calculates the z-score
+def z_score(last_record, stats):
+    if stats["std"] != 0 and np.isnan(stats["std"]) != True:
+        return round((last_record - stats["mean"])/ stats["std"],2)
+    else:
+        return 0
+
+# this calculates z-score for specific key value pair for the last tail_x days
+def get_zscore_by_key_val(key,val, tail_x):
+    dict_timeline = mongo_queries.timeline_for_key(key,val)
+    #print dict_timeline
+    df_timeline = pd.DataFrame.from_dict(dict_timeline)
+    #print df_timeline
+    df_count = df_timeline["count"].tail(tail_x)
+    #print df_count
+    #print df_count
+    stats = {}
+    stats["mean"] = df_count.mean()
+    stats["std"] = df_count.std()
+    #print stats
+    last_record = df_count.tail(1)
+    last_record = last_record.values[0]
+    #print last_record
+    return z_score(last_record, stats)
+
+# returns top x trending by key
+def get_top_trending_x(key, x, tail_x ):
+    rang = []
+    query_set = mongo_queries.unique(key)
+    for q in query_set:
+        sub = []
+        sub.append(q)
+        sub.append(get_zscore_by_key_val(key,q,tail_x))
+        rang.append(sub)
+    trending = sorted(rang, key=lambda x: x[1], reverse=True)
+    #print trending
+    return trending[:x]
+
+
 # returns todays date if it has passed 6PM and yesterdays date if not
 def yesterday_or_today():
     now = datetime.datetime.now(pytz.timezone("Europe/Belgrade"))
@@ -188,13 +227,13 @@ def timeline(request):
 
 def trending(request):
 
-    tags = mongo_queries.unique("tags")[:10]
+    tags = get_top_trending_x("tags", 10, 7)
 
-    cities = mongo_queries.unique("city")[:10]
+    cities = get_top_trending_x("city", 10, 7)
 
-    positions = mongo_queries.unique("position")[:10]
+    positions = get_top_trending_x("position", 10, 7)
 
-    firms =mongo_queries.unique("firm")[:10]
+    firms = get_top_trending_x("firm", 10, 7)
 
     context = {
         "tags":tags,

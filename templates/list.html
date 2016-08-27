@@ -46,12 +46,14 @@
 
         <div class="row" id="{{ list_css }}">
             {% for item in item_list %}
+                {% if item.name != "" %}
                 <a href="/item/{{ slug }}/{{ item.id }}/"><div class="col-md-offset-1 col-md-2 {{ div_css }}">
                     <div class="wrap-item-p">
                         <p class="text-center black">{{ item.name }}</p>
                     </div>
 
                 </div></a>
+                {% endif %}
             {% endfor %}
         </div>
 

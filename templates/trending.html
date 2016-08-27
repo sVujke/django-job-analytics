@@ -39,8 +39,8 @@
                             {% for tag in tags %}
                             <tr>
                               <td>{{ forloop.counter }}</td>
-                              <td>{{ tag }}</td>
-                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag.0 }}</td>
+                              <td>{{ tag.1 }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -64,8 +64,8 @@
                             {% for tag in positions %}
                             <tr>
                               <td>{{ forloop.counter }}</td>
-                              <td>{{ tag }}</td>
-                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag.0 }}</td>
+                              <td>{{ tag.1 }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -89,8 +89,8 @@
                             {% for tag in cities %}
                             <tr>
                               <td>{{ forloop.counter }}</td>
-                              <td>{{ tag }}</td>
-                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag.0 }}</td>
+                              <td>{{ tag.1 }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -114,8 +114,8 @@
                             {% for tag in firms %}
                             <tr>
                               <td>{{ forloop.counter }}</td>
-                              <td>{{ tag }}</td>
-                              <td>{{ forloop.counter }}</td>
+                              <td>{{ tag.0 }}</td>
+                              <td>{{ tag.1 }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
