@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare</title>
+</head>
+<body>
+
+    <div class="container">
+        {% include "navbar.html" %}
+
+        <div class="row">
+           <div>
+               <div class="col-md-10 col-md-offset-2" id="timeline-compare">
+
+               </div>
+           </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+           Timeline line chart
+        */
+        var x_arr =[];
+        var y_arr = [];
+
+        {% for x in timeline %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+
+        var data = [{
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+
+        }]
+
+        Plotly.newPlot('timeline-all', data);
+    </script>
+</body>
+</html>

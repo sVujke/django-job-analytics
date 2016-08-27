@@ -234,6 +234,20 @@
     color: white;
 }
 
+.compare-div{
+    margin-top: 10px;
+
+}
+
+.modal-body{
+    height:280px;
+}
+
+.timeline-compare{
+    width: 800px;
+    height: 600px;
+}
+
 @media (max-width: 480px) {
     #timeline-item{height: 350px; width:350px; margin-left: -12%;}
     #q-item{height: 350px; width:350px; margin-left: -12%;}
@@ -256,11 +270,3 @@
     .tags-div{width: 100%;}
 }
 
-.compare-div{
-    margin-top: 10px;
-
-}
-
-.modal-body{
-    height:280px;
-}
