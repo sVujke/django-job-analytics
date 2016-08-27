@@ -160,7 +160,7 @@ def item(request, slug, id):
             break
 
     timeline = mongo_queries.timeline_for_key(slug,item_name)
-
+    #print timeline
 
     stats = get_stats(timeline)
 
@@ -207,9 +207,53 @@ def trending(request):
 
 def compare(request):
 
+    mapper = {
+        "Companies": "firm",
+        "Positions": "position",
+        "Cities": "city",
+        "Tags": "tags"
+    }
 
+    if request.method == "POST":
+        item_1 = request.POST.get("item-1")
+        item_2 = request.POST.get("item-2")
+        item_3 = request.POST.get("item-3")
+        item_4 = request.POST.get("item-4")
+        item_5 = request.POST.get("item-5")
+        title = request.POST.get("title")
+
+        print item_1, item_2, item_3, item_4, item_5, title
+
+        key = mapper[title]
+
+        items_1 = mongo_queries.timeline_for_key(key, item_1)
+        items_2 = mongo_queries.timeline_for_key(key, item_2)
+        items_3 = mongo_queries.timeline_for_key(key, item_3)
+        items_4 = mongo_queries.timeline_for_key(key, item_4)
+        items_5 = mongo_queries.timeline_for_key(key, item_5)
+
+        key_modificator(items_1)
+        key_modificator(items_2)
+        key_modificator(items_3)
+        key_modificator(items_4)
+        key_modificator(items_5)
+
+    print len(items_1), len(items_2), len(items_3), len(items_4), len(items_5)
+
+    headline_css = key+"-title"
 
     context = {
-
+        "items_1": items_1,
+        "items_2": items_2,
+        "items_3": items_3,
+        "items_4": items_4,
+        "items_5": items_5,
+        "items_1_name": item_1,
+        "items_2_name": item_2,
+        "items_3_name": item_3,
+        "items_4_name": item_4,
+        "items_5_name": item_5,
+        "headline_css": headline_css,
     }
+
     return render(request, 'compare.html', context)

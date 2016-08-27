@@ -14,8 +14,14 @@
         {% include "navbar.html" %}
 
         <div class="row">
+
+        <div class="row margin-bottom">
+            <div class="col-md-10 col-md-offset-1  text-center ">
+                <h1 class="{{ headline_css }}">Comparison</h1>
+            </div>
+        </div>
            <div>
-               <div class="col-md-10 col-md-offset-2" id="timeline-compare">
+               <div class="col-md-10 col-md-offset-1" id="timeline-compare">
 
                </div>
            </div>
@@ -29,20 +35,88 @@
         var x_arr =[];
         var y_arr = [];
 
-        {% for x in timeline %}
+        {% for x in items_1 %}
             x_arr.push('{{x.id}}');
             y_arr.push('{{x.count}}');
         {% endfor %}
 
 
-        var data = [{
+        var trace1 = {
             x: x_arr,
             y: y_arr,
             type: 'scatter',
+            name: '{{ items_1_name }}'
+        };
 
-        }]
+        x_arr =[];
+        y_arr =[];
 
-        Plotly.newPlot('timeline-all', data);
+         {% for x in items_2 %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+         var trace2 = {
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+             name: '{{ items_2_name }}'
+        };
+
+        x_arr =[];
+        y_arr =[];
+
+         {% for x in items_3 %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+        var trace3 = {
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+            name: '{{ items_3_name }}'
+        };
+
+        x_arr =[];
+        y_arr =[];
+
+         {% for x in items_4 %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+         var trace4 = {
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+             name: '{{ items_4_name }}'
+        };
+
+        x_arr =[];
+        y_arr =[];
+
+         {% for x in items_5 %}
+            x_arr.push('{{x.id}}');
+            y_arr.push('{{x.count}}');
+        {% endfor %}
+
+         var trace5 = {
+            x: x_arr,
+            y: y_arr,
+            type: 'scatter',
+             name: '{{ items_5_name }}'
+        };
+
+        var layout = {
+            title:'Comparrison of 5 items by no. of ads per day'
+        };
+
+        data = [trace1,trace2, trace3, trace4, trace5];
+
+        Plotly.newPlot('timeline-compare', data, layout);
+
+
     </script>
 </body>
 </html>

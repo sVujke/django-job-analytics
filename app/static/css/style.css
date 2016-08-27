@@ -243,9 +243,9 @@
     height:280px;
 }
 
-.timeline-compare{
-    width: 800px;
-    height: 600px;
+#timeline-compare{
+    width: 1000px;
+    height: 500px;
 }
 
 @media (max-width: 480px) {
