@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^timeline/', views.timeline, name="timeline"),
     url(r'^trending/', views.trending, name="trending"),
     url(r'^item/(?P<slug>[\w-]+)/(?P<id>[0-9]+)/$', views.item, name="item"),
+    url(r'^compare/', views.compare, name="compare"),
     url(r'^admin/', admin.site.urls),
 ]

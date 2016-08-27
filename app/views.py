@@ -204,3 +204,12 @@ def trending(request):
     }
 
     return render(request, 'trending.html', context)
+
+def compare(request):
+
+
+
+    context = {
+
+    }
+    return render(request, 'compare.html', context)

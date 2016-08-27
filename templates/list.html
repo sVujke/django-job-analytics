@@ -62,7 +62,8 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="form-group">
-                    <form role="form" action="https://www.google.rs/#gws_rd=ssl">
+                    <form role="form" action="/compare/" method="post">
+                    {% csrf_token %}
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h2 class="modal-title">Compare 5 {{ title }}</h2>
